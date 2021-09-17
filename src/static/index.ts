@@ -51,8 +51,8 @@ function generateHtmlFileFor (category: any, raw: any) {
       }
     })
     .then(() => {
-      // return lib.loadMDUrlNode(url)
-      return 'md fuck'
+      return lib.loadMDUrlNode(url)
+      // return 'md fuck'
     })
     .then((mdHtml: string) => {
       return generateHtml(category, mdHtml, raw.path)
