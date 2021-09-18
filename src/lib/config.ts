@@ -3,7 +3,7 @@ export default {
     {
       owner: 'zhangruize',
       repo: 'docs',
-      path: ''
+      path: 'cs'
     }
   ]
 }
