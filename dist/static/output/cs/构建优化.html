@@ -1,0 +1,75 @@
+
+  <!DOCTYPE html>
+  <html>
+  
+  <head>
+      <meta charset="utf-8" />
+      <title>
+          Zrek's blog
+      </title>
+      <style>
+      li {
+        cursor:pointer;
+      }
+      
+      li:hover{
+        background-color: #ffffff99;
+      }
+      
+      code{
+        background-color: #eee;
+        padding:2px;
+        display:inline-block;
+      }
+      
+      pre{
+        background-color: #eee;
+        padding:10px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      </style>
+  </head>
+  
+  <body style="background:#f7f7f7;">
+      <div style="display:flex;width:100%;">
+          <div>Zrek's blog</div>
+      </div>
+      <div style="display:flex;width:100%;">
+          <div id="category" style="display: flex; flex-direction:column;background-color: antiquewhite; padding-right:20px; flex-shrink:0;">
+          <ul><li onclick="location.href='../cs/Activity启动模式理解.html';">Activity启动模式理解</li><li onclick="location.href='../cs/ConcurrentHashMap理解.html';">ConcurrentHashMap理解</li><li onclick="location.href='../cs/Dex文件理解.html';">Dex文件理解</li><li onclick="location.href='../cs/Github&Gitlab-CI&CD理解.html';">Github&Gitlab-CI&CD理解</li><li onclick="location.href='../cs/Glide理解.html';">Glide理解</li><li onclick="location.href='../cs/HashMap理解.html';">HashMap理解</li><li onclick="location.href='../cs/JVM内存模型.html';">JVM内存模型</li><li onclick="location.href='../cs/Java内存模型(JMM).html';">Java内存模型(JMM)</li><li onclick="location.href='../cs/Java动态代码生成方案理解.html';">Java动态代码生成方案理解</li><li onclick="location.href='../cs/Java并发概述.html';">Java并发概述</li><li onclick="location.href='../cs/Kotlin语法糖理解.html';">Kotlin语法糖理解</li><li onclick="location.href='../cs/LinkedHashMap理解.html';">LinkedHashMap理解</li><li onclick="location.href='../cs/MMKVl理解.html';">MMKVl理解</li><li onclick="location.href='../cs/MultiDex理解.html';">MultiDex理解</li><li onclick="location.href='../cs/React理解.html';">React理解</li><li onclick="location.href='../cs/RxJava理解.html';">RxJava理解</li><li onclick="location.href='../cs/TreeMap理解.html';">TreeMap理解</li><li onclick="location.href='../cs/binder ipc原理.html';">binder ipc原理</li><li onclick="location.href='../cs/knowledge tree.html';">knowledge tree</li><li>pics<ul></ul></li><li onclick="location.href='../cs/v2.html';">v2</li><li onclick="location.href='../cs/volatile理解.html';">volatile理解</li><li onclick="location.href='../cs/手写React Native.html';">手写React Native</li><li onclick="location.href='../cs/插件化方案理解.html';">插件化方案理解</li><li>操作系统<ul><li onclick="location.href='../cs/操作系统/多任务操作系统.html';">多任务操作系统</li></ul></li><li onclick="location.href='../cs/构建优化.html';">构建优化</li><li>测试<ul><li onclick="location.href='../cs/测试/MockResponse来进行AndroidTest.html';">MockResponse来进行AndroidTest</li><li onclick="location.href='../cs/测试/内存泄漏测试.html';">内存泄漏测试</li></ul></li><li onclick="location.href='../cs/热修复方案理解.html';">热修复方案理解</li><li onclick="location.href='../cs/第三方面试整理.html';">第三方面试整理</li><li onclick="location.href='../cs/算法整理.html';">算法整理</li><li onclick="location.href='../cs/补码运算.html';">补码运算</li><li onclick="location.href='../cs/计算机网络.html';">计算机网络</li></ul>
+          </div>
+          <div id="reader" style="display: flex; flex-direction:column;flex-grow: 1; padding:20px">
+          <h1>
+<a id="user-content-构建优化" class="anchor" href="#%E6%9E%84%E5%BB%BA%E4%BC%98%E5%8C%96" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>构建优化</h1>
+<p>以下这些点，是对组件化项目实施后的一些优化选择。</p>
+<h2>
+<a id="user-content-依赖冲突提醒" class="anchor" href="#%E4%BE%9D%E8%B5%96%E5%86%B2%E7%AA%81%E6%8F%90%E9%86%92" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>依赖冲突提醒</h2>
+<p>在复杂的工程中，依赖冲突的问题更需要关注。危险的依赖冲突会导致不兼容的问题，从而发生运行时崩溃，而无法在编译期间感知。依赖冲突提醒是一个基于Gradle Dependencies的脚本，周期运行，用于分析检查一些处于“监视列表”中的模块所使用的依赖是否发生了冲突。会通过邮件发出冲突提醒以及改进建议督促模块开发者跟进依赖统一。'严格'或'宽松'模式下将意味着发现上述情况时，将直接拒绝构建或仅仅只是发送提醒。</p>
+<h2>
+<a id="user-content-关系构建自底而上" class="anchor" href="#%E5%85%B3%E7%B3%BB%E6%9E%84%E5%BB%BA%E8%87%AA%E5%BA%95%E8%80%8C%E4%B8%8A" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>关系构建（自底而上）</h2>
+<p>一个自定义的构建脚本。周期运行，旨在以某种特定的构建方式去分析检查各个模块的问题。</p>
+<h2>
+<a id="user-content-仓库过滤配置" class="anchor" href="#%E4%BB%93%E5%BA%93%E8%BF%87%E6%BB%A4%E9%85%8D%E7%BD%AE" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>仓库过滤配置</h2>
+<p>使用gradle5.1增加的仓库过滤配置，可以针对JdGroup这类很明确的依赖项做过滤。可大幅加快Gradle Sync的时间成本。对于复杂的工程，时间从2min+缩减到30s。</p>
+<h2>
+<a id="user-content-构建环境变量抛弃无意义的flavor" class="anchor" href="#%E6%9E%84%E5%BB%BA%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E6%8A%9B%E5%BC%83%E6%97%A0%E6%84%8F%E4%B9%89%E7%9A%84flavor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>构建环境变量，抛弃无意义的Flavor</h2>
+<p>通过AGP在Build.gradle中增加BuildConfig字段支持。读入配置来源可以是脚本注入gradle.properties或编译器参数。</p>
+<p>减少了无意义的打包分支。减少了无意义的构建配置代码提交。结合无意义的Flavor，甚至是优化掉了没有特别意义的Flavor，构建时间缩少40%。为打包节省的时间和维护成本每个版本减少了应该以小时、1天来计了。</p>
+<ul>
+<li>网关环境：线上，预发，测试</li>
+<li>抓包特性：支持抓包，不支持抓包</li>
+<li>安全特性：加固，不加固</li>
+<li>签名特性：正式签名，非正式签名</li>
+<li>分支选择、版本管理。</li>
+</ul>
+<h2>
+<a id="user-content-测试检查" class="anchor" href="#%E6%B5%8B%E8%AF%95%E6%A3%80%E6%9F%A5" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>测试检查</h2>
+<p>周期性运行的构建检查、内存泄漏检查、兼容性检查、安全检查、业务自动化回归检查、单元测试检查等。</p>
+
+          </div>
+      </div>
+  </body>
+  
+  </html>
+    

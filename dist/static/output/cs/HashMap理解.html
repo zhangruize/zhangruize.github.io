@@ -1,0 +1,85 @@
+
+  <!DOCTYPE html>
+  <html>
+  
+  <head>
+      <meta charset="utf-8" />
+      <title>
+          Zrek's blog
+      </title>
+      <style>
+      li {
+        cursor:pointer;
+      }
+      
+      li:hover{
+        background-color: #ffffff99;
+      }
+      
+      code{
+        background-color: #eee;
+        padding:2px;
+        display:inline-block;
+      }
+      
+      pre{
+        background-color: #eee;
+        padding:10px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      </style>
+  </head>
+  
+  <body style="background:#f7f7f7;">
+      <div style="display:flex;width:100%;">
+          <div>Zrek's blog</div>
+      </div>
+      <div style="display:flex;width:100%;">
+          <div id="category" style="display: flex; flex-direction:column;background-color: antiquewhite; padding-right:20px; flex-shrink:0;">
+          <ul><li onclick="location.href='../cs/Activity启动模式理解.html';">Activity启动模式理解</li><li onclick="location.href='../cs/ConcurrentHashMap理解.html';">ConcurrentHashMap理解</li><li onclick="location.href='../cs/Dex文件理解.html';">Dex文件理解</li><li onclick="location.href='../cs/Github&Gitlab-CI&CD理解.html';">Github&Gitlab-CI&CD理解</li><li onclick="location.href='../cs/Glide理解.html';">Glide理解</li><li onclick="location.href='../cs/HashMap理解.html';">HashMap理解</li><li onclick="location.href='../cs/JVM内存模型.html';">JVM内存模型</li><li onclick="location.href='../cs/Java内存模型(JMM).html';">Java内存模型(JMM)</li><li onclick="location.href='../cs/Java动态代码生成方案理解.html';">Java动态代码生成方案理解</li><li onclick="location.href='../cs/Java并发概述.html';">Java并发概述</li><li onclick="location.href='../cs/Kotlin语法糖理解.html';">Kotlin语法糖理解</li><li onclick="location.href='../cs/LinkedHashMap理解.html';">LinkedHashMap理解</li><li onclick="location.href='../cs/MMKVl理解.html';">MMKVl理解</li><li onclick="location.href='../cs/MultiDex理解.html';">MultiDex理解</li><li onclick="location.href='../cs/React理解.html';">React理解</li><li onclick="location.href='../cs/RxJava理解.html';">RxJava理解</li><li onclick="location.href='../cs/TreeMap理解.html';">TreeMap理解</li><li onclick="location.href='../cs/binder ipc原理.html';">binder ipc原理</li><li onclick="location.href='../cs/knowledge tree.html';">knowledge tree</li><li>pics<ul></ul></li><li onclick="location.href='../cs/v2.html';">v2</li><li onclick="location.href='../cs/volatile理解.html';">volatile理解</li><li onclick="location.href='../cs/手写React Native.html';">手写React Native</li><li onclick="location.href='../cs/插件化方案理解.html';">插件化方案理解</li><li>操作系统<ul><li onclick="location.href='../cs/操作系统/多任务操作系统.html';">多任务操作系统</li></ul></li><li onclick="location.href='../cs/构建优化.html';">构建优化</li><li>测试<ul><li onclick="location.href='../cs/测试/MockResponse来进行AndroidTest.html';">MockResponse来进行AndroidTest</li><li onclick="location.href='../cs/测试/内存泄漏测试.html';">内存泄漏测试</li></ul></li><li onclick="location.href='../cs/热修复方案理解.html';">热修复方案理解</li><li onclick="location.href='../cs/第三方面试整理.html';">第三方面试整理</li><li onclick="location.href='../cs/算法整理.html';">算法整理</li><li onclick="location.href='../cs/补码运算.html';">补码运算</li><li onclick="location.href='../cs/计算机网络.html';">计算机网络</li></ul>
+          </div>
+          <div id="reader" style="display: flex; flex-direction:column;flex-grow: 1; padding:20px">
+          <h1>
+<a id="user-content-hashmap理解" class="anchor" href="#hashmap%E7%90%86%E8%A7%A3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>HashMap理解</h1>
+<h2>
+<a id="user-content-slot-bucket" class="anchor" href="#slot-bucket" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>slot, bucket</h2>
+<p>HashMap中以数组的形式存储了slot（槽）。当哈希碰撞时，会在slot中遍历里面的数据，当小于“树”化的阈值时，以链表存储，大于时会“树”化，采用的是“红黑树”。当小于“去树”化的阈值时又退回到链表。</p>
+<h2>
+<a id="user-content-哈希值计算" class="anchor" href="#%E5%93%88%E5%B8%8C%E5%80%BC%E8%AE%A1%E7%AE%97" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>哈希值计算</h2>
+<p>为了更好的性能，HashMap没有使用求余%或者除法，因为这是最耗时的指令。而是采用了和slot的尺寸进行按位与&amp;操作确定的slot下标（参加Thinking in java）。此外在对key调用hashCode()后还进行了一步处理，把hashCode()返回结果与此结果无符号右移16位进行亦或（^）运算。此原因是因为当map容量较小时，因为上面&amp;的原因，导致对于高bit位差异大，低bit位差异小的hashCode情况会很容易发生碰撞（float为key的案例）。</p>
+<h2>
+<a id="user-content-容量--负载因子" class="anchor" href="#%E5%AE%B9%E9%87%8F--%E8%B4%9F%E8%BD%BD%E5%9B%A0%E5%AD%90" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>容量 &amp; 负载因子</h2>
+<p>容量必须是2的指数，原因上面也已经涉及，此外还可以在扩容的时候，一定程度避免了数据移动，负载因子默认0.75，也是平均性能最优的结果。容量与负载因子的乘积，将决定map实际存储量达到多少时扩容。之所以不在达到容量上限才扩容是为了更好的性能。</p>
+<h2>
+<a id="user-content-时间复杂度" class="anchor" href="#%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>时间复杂度</h2>
+<p>slot查询O(1)，当然前提是key的hashCode()是O(1)。Bucket查询最差情况（哈希全碰撞）O(n)或O(log n)这取决于是链表还是树，最好情况O(1)，因为完全均匀且就仅一个元素。</p>
+<h2>
+<a id="user-content-node" class="anchor" href="#node" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Node</h2>
+<p>Node是存储HashMap存储元素的节点。但HashMap为了LinkedHashMap保留了newNode方法，以便LinkedHashMap创建特殊的一种Node。详见“LinkedHashMap理解”。</p>
+<p>而对于“树”化后，存储的节点会变为TreeNode，为了支持树的结构，增加了更多的字段。</p>
+<h2>
+<a id="user-content-null兼容性" class="anchor" href="#null%E5%85%BC%E5%AE%B9%E6%80%A7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Null兼容性</h2>
+<p>支持Null的Key或Value。null的key的HashCode认为是0</p>
+<h2>
+<a id="user-content-线程安全性" class="anchor" href="#%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E6%80%A7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>线程安全性</h2>
+<p>线程不安全</p>
+<h2>
+<a id="user-content-有序性" class="anchor" href="#%E6%9C%89%E5%BA%8F%E6%80%A7" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>有序性</h2>
+<p>不保证有序</p>
+<h2>
+<a id="user-content-扩容" class="anchor" href="#%E6%89%A9%E5%AE%B9" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>扩容</h2>
+<p>容量翻倍，对于链表结构，原来链表下的节点会被重排为两个链表，只需要取扩容时新增的那位bit即老的容量（oldCap）与节点的hash 进行与运算即可，分成的两个新链表对应了新的那一位是否为0.</p>
+<h2>
+<a id="user-content-jdk-7---jdk-8" class="anchor" href="#jdk-7---jdk-8" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>jdk 7 -&gt; jdk 8</h2>
+<p>由数组+链表的结构改为数组+链表+红黑树。
+优化了高位运算的hash算法：h^(h&gt;&gt;&gt;16)
+扩容后，元素要么是在原位置，要么是在原位置再移动2次幂的位置，且链表顺序不变。
+最后一条是重点，因为最后一条的变动，hashmap在1.8中，不会在出现死循环问题。</p>
+
+          </div>
+      </div>
+  </body>
+  
+  </html>
+    

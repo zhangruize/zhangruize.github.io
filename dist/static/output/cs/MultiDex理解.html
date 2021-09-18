@@ -1,0 +1,64 @@
+
+  <!DOCTYPE html>
+  <html>
+  
+  <head>
+      <meta charset="utf-8" />
+      <title>
+          Zrek's blog
+      </title>
+      <style>
+      li {
+        cursor:pointer;
+      }
+      
+      li:hover{
+        background-color: #ffffff99;
+      }
+      
+      code{
+        background-color: #eee;
+        padding:2px;
+        display:inline-block;
+      }
+      
+      pre{
+        background-color: #eee;
+        padding:10px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      </style>
+  </head>
+  
+  <body style="background:#f7f7f7;">
+      <div style="display:flex;width:100%;">
+          <div>Zrek's blog</div>
+      </div>
+      <div style="display:flex;width:100%;">
+          <div id="category" style="display: flex; flex-direction:column;background-color: antiquewhite; padding-right:20px; flex-shrink:0;">
+          <ul><li onclick="location.href='../cs/Activity启动模式理解.html';">Activity启动模式理解</li><li onclick="location.href='../cs/ConcurrentHashMap理解.html';">ConcurrentHashMap理解</li><li onclick="location.href='../cs/Dex文件理解.html';">Dex文件理解</li><li onclick="location.href='../cs/Github&Gitlab-CI&CD理解.html';">Github&Gitlab-CI&CD理解</li><li onclick="location.href='../cs/Glide理解.html';">Glide理解</li><li onclick="location.href='../cs/HashMap理解.html';">HashMap理解</li><li onclick="location.href='../cs/JVM内存模型.html';">JVM内存模型</li><li onclick="location.href='../cs/Java内存模型(JMM).html';">Java内存模型(JMM)</li><li onclick="location.href='../cs/Java动态代码生成方案理解.html';">Java动态代码生成方案理解</li><li onclick="location.href='../cs/Java并发概述.html';">Java并发概述</li><li onclick="location.href='../cs/Kotlin语法糖理解.html';">Kotlin语法糖理解</li><li onclick="location.href='../cs/LinkedHashMap理解.html';">LinkedHashMap理解</li><li onclick="location.href='../cs/MMKVl理解.html';">MMKVl理解</li><li onclick="location.href='../cs/MultiDex理解.html';">MultiDex理解</li><li onclick="location.href='../cs/React理解.html';">React理解</li><li onclick="location.href='../cs/RxJava理解.html';">RxJava理解</li><li onclick="location.href='../cs/TreeMap理解.html';">TreeMap理解</li><li onclick="location.href='../cs/binder ipc原理.html';">binder ipc原理</li><li onclick="location.href='../cs/knowledge tree.html';">knowledge tree</li><li>pics<ul></ul></li><li onclick="location.href='../cs/v2.html';">v2</li><li onclick="location.href='../cs/volatile理解.html';">volatile理解</li><li onclick="location.href='../cs/手写React Native.html';">手写React Native</li><li onclick="location.href='../cs/插件化方案理解.html';">插件化方案理解</li><li>操作系统<ul><li onclick="location.href='../cs/操作系统/多任务操作系统.html';">多任务操作系统</li></ul></li><li onclick="location.href='../cs/构建优化.html';">构建优化</li><li>测试<ul><li onclick="location.href='../cs/测试/MockResponse来进行AndroidTest.html';">MockResponse来进行AndroidTest</li><li onclick="location.href='../cs/测试/内存泄漏测试.html';">内存泄漏测试</li></ul></li><li onclick="location.href='../cs/热修复方案理解.html';">热修复方案理解</li><li onclick="location.href='../cs/第三方面试整理.html';">第三方面试整理</li><li onclick="location.href='../cs/算法整理.html';">算法整理</li><li onclick="location.href='../cs/补码运算.html';">补码运算</li><li onclick="location.href='../cs/计算机网络.html';">计算机网络</li></ul>
+          </div>
+          <div id="reader" style="display: flex; flex-direction:column;flex-grow: 1; padding:20px">
+          <h1>
+<a id="user-content-multidex理解" class="anchor" href="#multidex%E7%90%86%E8%A7%A3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MultiDex理解</h1>
+<p>核心点：</p>
+<ul>
+<li>根据sp以及之前解压的文件目录判断是否需要重新解压，需要的话，按规则从data/app下的apk文件（applicationInfo.sourceDir）中通过类似classes2.dex寻找ZipEntry，并解压到applicationInfo.dataDir即app的数据目录下特定子目录存放（方便之后使用而不是每次都解压）</li>
+<li>再依赖反射使用PathClassLoader下的pathList的makeDexElement方法生成dex元素</li>
+<li>最后通过反射获取把追加的、完整的dexElement赋值给pathList的dexElements。从而完成。</li>
+</ul>
+<pre lang="plain"><code>sourceDir
+/data/app/jd.cdyjy.overseas.jd_id_shopping_cart.app-fnmMyjqWlC9sW43gkc4_eg==/base.apk
+
+dataDir
+/data/user/0/jd.cdyjy.overseas.jd_id_shopping_cart.app
+
+</code></pre>
+
+          </div>
+      </div>
+  </body>
+  
+  </html>
+    

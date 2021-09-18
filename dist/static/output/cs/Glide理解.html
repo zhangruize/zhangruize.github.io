@@ -1,0 +1,108 @@
+
+  <!DOCTYPE html>
+  <html>
+  
+  <head>
+      <meta charset="utf-8" />
+      <title>
+          Zrek's blog
+      </title>
+      <style>
+      li {
+        cursor:pointer;
+      }
+      
+      li:hover{
+        background-color: #ffffff99;
+      }
+      
+      code{
+        background-color: #eee;
+        padding:2px;
+        display:inline-block;
+      }
+      
+      pre{
+        background-color: #eee;
+        padding:10px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      </style>
+  </head>
+  
+  <body style="background:#f7f7f7;">
+      <div style="display:flex;width:100%;">
+          <div>Zrek's blog</div>
+      </div>
+      <div style="display:flex;width:100%;">
+          <div id="category" style="display: flex; flex-direction:column;background-color: antiquewhite; padding-right:20px; flex-shrink:0;">
+          <ul><li onclick="location.href='../cs/Activity启动模式理解.html';">Activity启动模式理解</li><li onclick="location.href='../cs/ConcurrentHashMap理解.html';">ConcurrentHashMap理解</li><li onclick="location.href='../cs/Dex文件理解.html';">Dex文件理解</li><li onclick="location.href='../cs/Github&Gitlab-CI&CD理解.html';">Github&Gitlab-CI&CD理解</li><li onclick="location.href='../cs/Glide理解.html';">Glide理解</li><li onclick="location.href='../cs/HashMap理解.html';">HashMap理解</li><li onclick="location.href='../cs/JVM内存模型.html';">JVM内存模型</li><li onclick="location.href='../cs/Java内存模型(JMM).html';">Java内存模型(JMM)</li><li onclick="location.href='../cs/Java动态代码生成方案理解.html';">Java动态代码生成方案理解</li><li onclick="location.href='../cs/Java并发概述.html';">Java并发概述</li><li onclick="location.href='../cs/Kotlin语法糖理解.html';">Kotlin语法糖理解</li><li onclick="location.href='../cs/LinkedHashMap理解.html';">LinkedHashMap理解</li><li onclick="location.href='../cs/MMKVl理解.html';">MMKVl理解</li><li onclick="location.href='../cs/MultiDex理解.html';">MultiDex理解</li><li onclick="location.href='../cs/React理解.html';">React理解</li><li onclick="location.href='../cs/RxJava理解.html';">RxJava理解</li><li onclick="location.href='../cs/TreeMap理解.html';">TreeMap理解</li><li onclick="location.href='../cs/binder ipc原理.html';">binder ipc原理</li><li onclick="location.href='../cs/knowledge tree.html';">knowledge tree</li><li>pics<ul></ul></li><li onclick="location.href='../cs/v2.html';">v2</li><li onclick="location.href='../cs/volatile理解.html';">volatile理解</li><li onclick="location.href='../cs/手写React Native.html';">手写React Native</li><li onclick="location.href='../cs/插件化方案理解.html';">插件化方案理解</li><li>操作系统<ul><li onclick="location.href='../cs/操作系统/多任务操作系统.html';">多任务操作系统</li></ul></li><li onclick="location.href='../cs/构建优化.html';">构建优化</li><li>测试<ul><li onclick="location.href='../cs/测试/MockResponse来进行AndroidTest.html';">MockResponse来进行AndroidTest</li><li onclick="location.href='../cs/测试/内存泄漏测试.html';">内存泄漏测试</li></ul></li><li onclick="location.href='../cs/热修复方案理解.html';">热修复方案理解</li><li onclick="location.href='../cs/第三方面试整理.html';">第三方面试整理</li><li onclick="location.href='../cs/算法整理.html';">算法整理</li><li onclick="location.href='../cs/补码运算.html';">补码运算</li><li onclick="location.href='../cs/计算机网络.html';">计算机网络</li></ul>
+          </div>
+          <div id="reader" style="display: flex; flex-direction:column;flex-grow: 1; padding:20px">
+          <h1>
+<a id="user-content-glide理解" class="anchor" href="#glide%E7%90%86%E8%A7%A3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Glide理解</h1>
+<h2>
+<a id="user-content-engineresource" class="anchor" href="#engineresource" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>EngineResource</h2>
+<ul>
+<li>使用计数增加时机：</li>
+<li>使用计数减少时机：</li>
+</ul>
+<h2>
+<a id="user-content-glide缓存概述" class="anchor" href="#glide%E7%BC%93%E5%AD%98%E6%A6%82%E8%BF%B0" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Glide缓存概述</h2>
+<p>按介质分内存缓存、硬盘缓存。内存缓存分ActiveResources和MemoryCache，硬盘缓存分ResourceCache和DataCache。</p>
+<p>查询顺序也是按上面所说的顺序。</p>
+<h3>
+<a id="user-content-activeresources" class="anchor" href="#activeresources" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ActiveResources</h3>
+<ul>
+<li>使用HashMap+WeakReference(ReferenceQueue)来维护。</li>
+<li>添加时机：当有任何资源准备就绪，且不处在此map中。</li>
+<li>删除时机：当EngineResource的使用计数为0，或GC发生时，WeakReference被回收时。</li>
+<li>删除后会放到MemoryCache之中</li>
+<li>索引Key</li>
+</ul>
+<h3>
+<a id="user-content-memorycache" class="anchor" href="#memorycache" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>MemoryCache</h3>
+<ul>
+<li>使用LinkedHashMap实现的LruCache。</li>
+<li>添加时机：ActiveResources剔除时候。</li>
+<li>删除时机：Lru剔除算法</li>
+<li>索引Key</li>
+</ul>
+<h3>
+<a id="user-content-resourcecache" class="anchor" href="#resourcecache" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ResourceCache</h3>
+<ul>
+<li>
+</li>
+</ul>
+<h3>
+<a id="user-content-datacache" class="anchor" href="#datacache" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>DataCache</h3>
+<h2>
+<a id="user-content-bitmappool" class="anchor" href="#bitmappool" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>BitmapPool</h2>
+<h2>
+<a id="user-content-target" class="anchor" href="#target" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Target</h2>
+<ul>
+<li>
+</li>
+</ul>
+<h2>
+<a id="user-content-配置方式代码设计" class="anchor" href="#%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>配置方式代码设计</h2>
+<ul>
+<li>由于是单例的设计，只需要一次初始化配置。注解标记自定义初始化实现类。使用了APT方案。</li>
+</ul>
+<h2>
+<a id="user-content-加载模式代码设计" class="anchor" href="#%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%BC%8F%E4%BB%A3%E7%A0%81%E8%AE%BE%E8%AE%A1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>加载模式代码设计</h2>
+<ul>
+<li>维护了一个注册表，用于查询不同的加载目标、数据源类型对应的加载器类。可以自定义添加、替换各种加载器的实现，甚至是最终的<code>GlideUrl.class, InputStream.class</code>的实现，从而可以把网络加载过程使用不同的网络库实现。</li>
+<li>对于加载器进行了抽象、加载器完成的callback也进行了抽象。从而可以让Glide的缓存机制脱离于加载器的实现，可以正常运行。</li>
+</ul>
+<h2>
+<a id="user-content-畅想" class="anchor" href="#%E7%95%85%E6%83%B3" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>畅想</h2>
+<p>Glide实际上处理的已经不只是图片的加载和缓存处理，实际上是任何资源的加载与内置的缓存方案。其加载器可以用来加载任何东西，而缓存机制则提供了对加载完的资源进行4级的缓存处理。当然对于Bitmap，有BitmapPool的优化。结合Retrofit的感觉，Retrofit实际上也做的更像是去描述一个请求，请求的基本信息，入参信息，想要返回的结果信息，至于怎么实现可以有很大的弹性。而Glide的</p>
+
+          </div>
+      </div>
+  </body>
+  
+  </html>
+    
