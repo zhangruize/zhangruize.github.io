@@ -40,21 +40,38 @@
           <ul><li onclick="location.href='../cs/0依赖创造一个语言跑起来.html';">0依赖创造一个语言跑起来</li><li onclick="location.href='../cs/Activity启动模式理解.html';">Activity启动模式理解</li><li onclick="location.href='../cs/ConcurrentHashMap理解.html';">ConcurrentHashMap理解</li><li onclick="location.href='../cs/Dex文件理解.html';">Dex文件理解</li><li onclick="location.href='../cs/Github&Gitlab-CI&CD理解.html';">Github&Gitlab-CI&CD理解</li><li onclick="location.href='../cs/Glide理解.html';">Glide理解</li><li onclick="location.href='../cs/HashMap理解.html';">HashMap理解</li><li onclick="location.href='../cs/JVM内存模型.html';">JVM内存模型</li><li onclick="location.href='../cs/Java内存模型(JMM).html';">Java内存模型(JMM)</li><li onclick="location.href='../cs/Java动态代码生成方案理解.html';">Java动态代码生成方案理解</li><li onclick="location.href='../cs/Java并发概述.html';">Java并发概述</li><li onclick="location.href='../cs/Js dev.html';">Js dev</li><li onclick="location.href='../cs/Kotlin语法糖理解.html';">Kotlin语法糖理解</li><li onclick="location.href='../cs/LinkedHashMap理解.html';">LinkedHashMap理解</li><li onclick="location.href='../cs/MMKVl理解.html';">MMKVl理解</li><li onclick="location.href='../cs/MultiDex理解.html';">MultiDex理解</li><li onclick="location.href='../cs/React理解.html';">React理解</li><li onclick="location.href='../cs/RxJava理解.html';">RxJava理解</li><li onclick="location.href='../cs/TreeMap理解.html';">TreeMap理解</li><li onclick="location.href='../cs/binder ipc原理.html';">binder ipc原理</li><li onclick="location.href='../cs/dagger2.html';">dagger2</li><li onclick="location.href='../cs/index.html';">index</li><li onclick="location.href='../cs/js engines.html';">js engines</li><li onclick="location.href='../cs/knowledge tree.html';">knowledge tree</li><li>pics<ul></ul></li><li onclick="location.href='../cs/rust.html';">rust</li><li onclick="location.href='../cs/v2.html';">v2</li><li onclick="location.href='../cs/volatile理解.html';">volatile理解</li><li onclick="location.href='../cs/吉他指型推导.html';">吉他指型推导</li><li onclick="location.href='../cs/手写React Native.html';">手写React Native</li><li onclick="location.href='../cs/插件化方案理解.html';">插件化方案理解</li><li>操作系统<ul><li onclick="location.href='../cs/操作系统/多任务操作系统.html';">多任务操作系统</li></ul></li><li onclick="location.href='../cs/构建优化.html';">构建优化</li><li>测试<ul><li onclick="location.href='../cs/测试/MockResponse来进行AndroidTest.html';">MockResponse来进行AndroidTest</li><li onclick="location.href='../cs/测试/内存泄漏测试.html';">内存泄漏测试</li></ul></li><li onclick="location.href='../cs/热修复方案理解.html';">热修复方案理解</li><li onclick="location.href='../cs/第三方面试整理.html';">第三方面试整理</li><li onclick="location.href='../cs/算法整理.html';">算法整理</li><li onclick="location.href='../cs/补码运算.html';">补码运算</li><li onclick="location.href='../cs/计算机网络.html';">计算机网络</li></ul>
           </div>
           <div id="reader" style="display: flex; flex-direction:column;flex-grow: 1; padding:20px">
-          <h1>
-<a id="user-content-java并发概述" class="anchor" href="#java%E5%B9%B6%E5%8F%91%E6%A6%82%E8%BF%B0" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Java并发概述</h1>
-<p>我们将写一些文章来介绍Java并发上的一些须知须会</p>
+          <p>本文档旨在描述Js Dev的一些要点，可以帮助你快速上手、搭建一个现代的Js环境。高手可以直接忽略。</p>
+<blockquote>
+<p>本文Js环境主要指基于Node的环境。文本编辑器使用VSCode。</p>
+</blockquote>
+<p>一开始面临各种配置文件，比如package.json, tsconfig.json, webpack.js xxx.json/js这种各式各样的dsl文件让我觉得力不从心，但其实大部分的工具都提供了init指令用于友好地、交互地初始化一份本地工作环境。当力不从心的时候，诉求很简单，只想要一份简单的配置能Run起来时，<strong>请一定记得npx ... init/--init</strong>，就不必到处去找一个配置样本再自定义了。</p>
+<p>一般我需要的环境配置如下：</p>
+<p>最基本</p>
 <ul>
-<li>Synchronize 的优化（无锁、偏向锁、轻量锁、重量锁）以及JVM上的实现原理（对象头）</li>
-<li>Atomic原子库（CAS，ABA问题）</li>
-<li><a href="https://juejin.im/post/5a2b53b7f265da432a7b821c" rel="nofollow">Volatile关键字</a></li>
-<li>线程安全的集合实现</li>
-<li>Object自身的同步wait, notify等，Thread的join等</li>
-<li>线程池，多线程同步， CountDownLatch, Barrier</li>
-</ul>
-<p>不过在此之前，还是需要了解一些如下的知识才可以更好进行：</p>
+<li>node
 <ul>
-<li>Jvm内存模型</li>
+<li>cd working_space</li>
+<li>npm init</li>
 </ul>
+</li>
+<li>ts
+<ul>
+<li>npm install -D typescript</li>
+<li>npx tsc --init</li>
+</ul>
+</li>
+</ul>
+<p>需要watch，需要出捆绑包，需要面向web（如果只是简单watch，可以用node手写）</p>
+<ul>
+<li>webpack
+<ul>
+<li>npm install -D webpack</li>
+<li>npx webpack init</li>
+</ul>
+</li>
+<li>webpack-shell-plugin-next</li>
+</ul>
+<p>之后根据需要，关注、编辑目录下的tsconfig.json, package.json, webpack.js即可。若需要高级用法，再查官网定义。</p>
 
           </div>
       </div>

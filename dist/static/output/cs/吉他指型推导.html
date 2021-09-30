@@ -1,0 +1,1198 @@
+
+  <!DOCTYPE html>
+  <html>
+  
+  <head>
+      <meta charset="utf-8" />
+      <title>
+          Zrek's blog
+      </title>
+      <style>
+      li {
+        cursor:pointer;
+      }
+      
+      li:hover{
+        background-color: #ffffff99;
+      }
+      
+      code{
+        background-color: #eee;
+        padding:2px;
+        display:inline-block;
+      }
+      
+      pre{
+        background-color: #eee;
+        padding:10px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      </style>
+  </head>
+  
+  <body style="background:#f7f7f7;">
+      <div style="display:flex;width:100%;">
+          <div>Zrek's blog</div>
+      </div>
+      <div style="display:flex;width:100%;">
+          <div id="category" style="display: flex; flex-direction:column;background-color: antiquewhite; padding-right:20px; flex-shrink:0;">
+          <ul><li onclick="location.href='../cs/0依赖创造一个语言跑起来.html';">0依赖创造一个语言跑起来</li><li onclick="location.href='../cs/Activity启动模式理解.html';">Activity启动模式理解</li><li onclick="location.href='../cs/ConcurrentHashMap理解.html';">ConcurrentHashMap理解</li><li onclick="location.href='../cs/Dex文件理解.html';">Dex文件理解</li><li onclick="location.href='../cs/Github&Gitlab-CI&CD理解.html';">Github&Gitlab-CI&CD理解</li><li onclick="location.href='../cs/Glide理解.html';">Glide理解</li><li onclick="location.href='../cs/HashMap理解.html';">HashMap理解</li><li onclick="location.href='../cs/JVM内存模型.html';">JVM内存模型</li><li onclick="location.href='../cs/Java内存模型(JMM).html';">Java内存模型(JMM)</li><li onclick="location.href='../cs/Java动态代码生成方案理解.html';">Java动态代码生成方案理解</li><li onclick="location.href='../cs/Java并发概述.html';">Java并发概述</li><li onclick="location.href='../cs/Js dev.html';">Js dev</li><li onclick="location.href='../cs/Kotlin语法糖理解.html';">Kotlin语法糖理解</li><li onclick="location.href='../cs/LinkedHashMap理解.html';">LinkedHashMap理解</li><li onclick="location.href='../cs/MMKVl理解.html';">MMKVl理解</li><li onclick="location.href='../cs/MultiDex理解.html';">MultiDex理解</li><li onclick="location.href='../cs/React理解.html';">React理解</li><li onclick="location.href='../cs/RxJava理解.html';">RxJava理解</li><li onclick="location.href='../cs/TreeMap理解.html';">TreeMap理解</li><li onclick="location.href='../cs/binder ipc原理.html';">binder ipc原理</li><li onclick="location.href='../cs/dagger2.html';">dagger2</li><li onclick="location.href='../cs/index.html';">index</li><li onclick="location.href='../cs/js engines.html';">js engines</li><li onclick="location.href='../cs/knowledge tree.html';">knowledge tree</li><li>pics<ul></ul></li><li onclick="location.href='../cs/rust.html';">rust</li><li onclick="location.href='../cs/v2.html';">v2</li><li onclick="location.href='../cs/volatile理解.html';">volatile理解</li><li onclick="location.href='../cs/吉他指型推导.html';">吉他指型推导</li><li onclick="location.href='../cs/手写React Native.html';">手写React Native</li><li onclick="location.href='../cs/插件化方案理解.html';">插件化方案理解</li><li>操作系统<ul><li onclick="location.href='../cs/操作系统/多任务操作系统.html';">多任务操作系统</li></ul></li><li onclick="location.href='../cs/构建优化.html';">构建优化</li><li>测试<ul><li onclick="location.href='../cs/测试/MockResponse来进行AndroidTest.html';">MockResponse来进行AndroidTest</li><li onclick="location.href='../cs/测试/内存泄漏测试.html';">内存泄漏测试</li></ul></li><li onclick="location.href='../cs/热修复方案理解.html';">热修复方案理解</li><li onclick="location.href='../cs/第三方面试整理.html';">第三方面试整理</li><li onclick="location.href='../cs/算法整理.html';">算法整理</li><li onclick="location.href='../cs/补码运算.html';">补码运算</li><li onclick="location.href='../cs/计算机网络.html';">计算机网络</li></ul>
+          </div>
+          <div id="reader" style="display: flex; flex-direction:column;flex-grow: 1; padding:20px">
+          <p><g-emoji class="g-emoji" alias="zero" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/0030-20e3.png">0️⃣</g-emoji><g-emoji class="g-emoji" alias="one" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/0031-20e3.png">1️⃣</g-emoji><g-emoji class="g-emoji" alias="two" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/0032-20e3.png">2️⃣</g-emoji><g-emoji class="g-emoji" alias="three" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/0033-20e3.png">3️⃣</g-emoji><g-emoji class="g-emoji" alias="four" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/0034-20e3.png">4️⃣</g-emoji></p>
+<ul>
+<li>
+<g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji>根音</li>
+<li><g-emoji class="g-emoji" alias="orange_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e0.png">🟠</g-emoji></li>
+<li>
+<g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji>3/5音</li>
+<li><g-emoji class="g-emoji" alias="green_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e2.png">🟢</g-emoji></li>
+<li><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></li>
+<li><g-emoji class="g-emoji" alias="purple_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e3.png">🟣</g-emoji></li>
+<li><g-emoji class="g-emoji" alias="o" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/2b55.png">⭕</g-emoji></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+<th align="center">C/a #C/#a</th>
+<th align="center">0</th>
+<th align="center">1</th>
+<th align="center">2</th>
+<th align="center">3</th>
+<th align="center">4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">D/b</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">#D/c</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">E/#c</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">F/d #F/#d</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">G/e</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">#G/f</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">A/#f</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">#A/g</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+<td align="center">B/#g</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">4</td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="yellow_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f7e1.png">🟡</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="red_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f534.png">🔴</g-emoji></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center">C/a</td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+<tr>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+<td align="center"><g-emoji class="g-emoji" alias="large_blue_circle" fallback-src="https://github.githubassets.com/images/icons/emoji/unicode/1f535.png">🔵</g-emoji></td>
+</tr>
+</tbody>
+</table>
+
+          </div>
+      </div>
+  </body>
+  
+  </html>
+    
